@@ -30,11 +30,13 @@ class Film {
     return 'Film{id: $id, title: $title, image: $image, description: $description, release_date: $release_date, director: $director, running_time: $running_time, rt_score: $rt_score}';
   }
   static Future<List<Film>> fetchFilms() async {
+    //print("in fetchFilms");
     var response = await http.get(Uri.parse("$baseUrl/"));
 
     if (response.statusCode != 200) {
       throw Exception("Error ${response.statusCode} fetching movies");
     }
+    //print(response.body);
 
     return compute((String input) {
       final jsonList = jsonDecode(input);

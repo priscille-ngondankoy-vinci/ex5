@@ -16,9 +16,14 @@ class FilmRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("Directed by ${film.director} - ${film.running_time} minutes"),
+          InkWell(
+            onTap: () => launchUrl(Uri.parse(film.rt_score)),
 
+            child: Image.network(film.image)
+          )
         ],
       ),
     );
   }
+
 }
