@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled2/views/film_row.dart';
 
 import '../models/anime.dart';
+import '../models/film.dart';
 import 'anime_row.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,14 +20,14 @@ class HomeScreen extends StatelessWidget {
         child: FutureBuilder(
             future: Future.delayed(
               const Duration(seconds: 3),
-                  () => Anime.fetchAnimes(),
+                  () => Film.fetchFilms(),
             ),
           builder: (context, snapshot) {
             if (snapshot.hasData) { // Completed with a value
-              final animes = snapshot.data!;
+              final films = snapshot.data!;
               return ListView.separated(
-                itemCount: animes.length,
-                itemBuilder: (context, index) => AnimeRow(anime: animes[index]),
+                itemCount: films.length,
+                itemBuilder: (context, index) => FilmRow(film: films[index]),
                 separatorBuilder: (context, index) => const Divider(),
               );
             }
